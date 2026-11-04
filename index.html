@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+ <meta name="theme-color" content="#125e52"><meta name="description" content="中文三相交流电路计算器，实时计算有功、无功和视在功率，包含公式、步骤和自动测试。">
+ <title>相知 · 三相交流电路计算器</title>
+ <style>
+:root{--ink:#243e35;--muted:#738078;--green:#146653;--line:#e3e9e3;--paper:#f5f6f1;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif;color:var(--ink);background:var(--paper);font-synthesis:none}*{box-sizing:border-box}body{margin:0}button,input,select{font:inherit}button,a,input,select,summary{-webkit-tap-highlight-color:transparent}button,summary{cursor:pointer}button{touch-action:manipulation}a{color:inherit;text-decoration:none}header{height:84px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 max(28px,calc((100vw - 1240px)/2));background:#fafbf7}.brand{font-size:23px;font-weight:700;display:flex;align-items:center;gap:12px;letter-spacing:2px}.brand-icon{display:grid;place-items:center;background:var(--green);color:white;width:36px;height:36px;border-radius:10px;font-size:36px;font-weight:400;line-height:1}.brand-en{font-size:11px;letter-spacing:2px;margin-left:5px;color:#6d7e73}.header-note{font-size:12px;color:#6c7b70;display:flex;align-items:center;gap:9px}.header-note i{width:6px;height:6px;background:#328467;border-radius:50%}main{max-width:1240px;margin:auto;padding:44px 28px 0}.intro{display:flex;align-items:center;justify-content:space-between;gap:20px}.eyebrow{font-size:10px;letter-spacing:2.8px;color:#57816b;font-weight:600;margin:0 0 14px}h1{font-size:35px;letter-spacing:-1px;font-weight:650;margin:0}h1>span{display:block;font-size:15px;color:#6f7f71;letter-spacing:3px;font-weight:400;margin-top:13px}.sub{font-size:13px;color:var(--muted);margin:15px 0 22px}.phase-art{width:250px;opacity:.6;position:relative;flex-shrink:0}.phase-art>span{position:absolute;top:-15px;color:#7b8d76;font-size:10px}.phase-art>span:nth-child(2){left:90px}.phase-art>span:nth-child(3){left:180px}.phase-art svg{width:100%;fill:none;stroke:#9aa98d;stroke-width:1.3}.phase-art path:nth-child(2){stroke:#b9a986}.phase-art path:nth-child(3){stroke:#97adb2}.scope{font-size:11px;color:#758373;display:flex;align-items:center;gap:12px;margin:4px 0 27px;line-height:1.7}.scope>span{border:1px solid #d9e1d4;padding:3px 8px;border-radius:4px;font-size:10px;color:#526b52;white-space:nowrap}.workspace{display:grid;grid-template-columns:330px minmax(0,1fr);gap:22px;align-items:start}.panel{background:#fff;border:1px solid #e1e7df;border-radius:14px;box-shadow:0 5px 18px #294d321c}.input-panel,.results-panel,.steps-panel{padding:25px}.section-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:23px}h2{font-size:16px;margin:0;font-weight:600}h2 small{color:#8fa08f;font-size:11px;font-weight:500;margin-right:10px;font-variant-numeric:tabular-nums}.text-button{border:0;background:transparent;color:#7a897c;font-size:12px;padding:6px}.text-button:hover{color:var(--green)}label{display:flex;justify-content:space-between;font-size:13px;margin-bottom:9px;font-weight:500}label>span{color:#829184;font-size:12px;font-weight:400}.input-wrap{position:relative}.input-wrap input{width:100%;padding:13px 58px 13px 15px;border-radius:7px;border:1px solid #dce4db;color:var(--ink);font-size:20px;font-variant-numeric:tabular-nums;background:#fcfdfb;min-height:52px;appearance:textfield}.input-wrap input::-webkit-inner-spin-button{appearance:none}.input-wrap>span{position:absolute;right:15px;top:17px;font-size:13px;color:#8a968b}.hint{font-size:11px;color:#7a897d;line-height:1.7;margin:7px 0 21px}select{width:100%;min-height:46px;border:1px solid #dce4db;border-radius:7px;background:#fcfdfb;color:#526b5a;padding:10px;font-size:12px;margin-bottom:17px}.primary{background:var(--green);color:#fff;width:100%;border:0;min-height:48px;border-radius:7px;padding:12px 16px;display:flex;justify-content:space-between;align-items:center;font-size:14px;transition:background .2s}.primary:hover{background:#0e5141}.primary>span{font-size:22px}.live-hint{text-align:center;font-size:10px;color:#8c998c;margin:11px 0 0}.examples{border-top:1px solid var(--line);margin-top:24px;padding-top:20px}h3{font-size:12px;margin:0 0 13px;font-weight:500}h3>span{font-size:10px;color:#94a08f;font-weight:400;margin-left:8px}.example-list{display:flex;flex-wrap:wrap;gap:7px}.example-list button{border:1px solid #e2e8de;border-radius:6px;background:#f7f9f4;flex:1 1 100%;padding:10px 12px;text-align:left;font-size:11px;color:#5b715f;min-height:44px}.example-list button span{display:block;font-size:10px;color:#8b9788;margin-top:5px;letter-spacing:.3px}.example-list button:hover{border-color:#91b19c;background:#eef5ec}.right-column{display:grid;gap:22px}.badge{display:inline-flex;border-radius:20px;padding:5px 9px;background:#edf5ef;color:#518465;font-size:10px;white-space:nowrap}.badge:before{content:'•';margin-right:5px}.power-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:11px}.power{padding:18px 13px;border:1px solid #e0eae1;border-radius:9px;min-width:0}.power.active{background:#f0f6f0;border-color:#d8e7d7}.power.reactive{background:#fcf9f1;border-color:#eee5cf}.power.apparent{background:#f2f6fa;border-color:#e0e8f0}.power>div{font-size:11px;display:flex;align-items:center;gap:6px;color:#61775e}.power>div b{font-size:11px;margin-left:auto;opacity:.6;font-weight:400}.dot{height:6px;width:6px;flex-shrink:0;border-radius:50%;background:#397b4c}.reactive .dot{background:#b98e3d}.apparent .dot{background:#6489b0}.power p{margin:18px 0 11px;display:flex;flex-wrap:wrap;align-items:baseline;gap:4px}.power strong{font-size:29px;letter-spacing:-1px;font-weight:550;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}.power p>span{font-size:11px;color:#7b8d7a}.power small{font-size:10px;color:#8a9786}.reactive strong{color:#987c37}.apparent strong{color:#4e749b}.visual-row{display:grid;grid-template-columns:1.3fr 1fr;align-items:center;gap:30px;padding-top:24px}.mini-title{font-size:12px;margin:0}.visual-row .hint{margin:5px 0 0;font-size:10px}.visual-row svg{display:block;width:100%;max-height:170px}.visual-row svg text{font-size:12px;font-family:inherit}.angle-info{padding-left:26px;border-left:1px solid var(--line)}.angle-info>span{color:#8a9787;font-size:11px}.angle-info>strong{display:block;font-size:31px;font-weight:400;margin-top:7px;letter-spacing:-1px}.angle-info>p{font-size:11px;color:#7a8977;margin:8px 0 18px}.pf-meter{height:5px;background:#e9eee5;border-radius:5px;overflow:hidden;max-width:170px}.pf-meter>span{display:block;height:100%;background:#7b9d76;transition:width .25s}.angle-info>small{display:block;font-size:10px;color:#8b9785;margin-top:8px}.result-note{font-size:10px;line-height:1.8;color:#7e8e7c;background:#f7f9f4;border-radius:5px;padding:10px 12px;margin:14px 0 0}.steps-panel .section-title{margin-bottom:10px}.muted{font-size:10px;color:#9aa594}.step{display:grid;grid-template-columns:25px 1fr;gap:9px;padding:14px 0;border-top:1px solid #eff2ec}.step-num{border:1px solid #dfe7da;background:#f7f9f4;color:#7d9175;border-radius:50%;width:21px;height:21px;display:grid;place-items:center;font-size:10px}.step h3{margin:1px 0 8px;font-size:12px;color:#536c50}.formula{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:12px;color:#4c6454;margin:0 0 5px;line-height:1.8;overflow-wrap:anywhere}.substitution{font-size:11px;color:#899581;margin:0;line-height:1.8;overflow-wrap:anywhere}.footnote{font-size:10px;line-height:1.8;color:#94a08d;margin:13px 0 0}.test-panel{padding:20px 25px;margin-top:22px;box-shadow:none}summary{display:flex;justify-content:space-between;gap:10px;align-items:center;font-size:12px;min-height:30px;list-style:none}summary::-webkit-details-marker{display:none}summary>span:first-child{display:flex;align-items:center;gap:10px}summary>span:last-child{font-size:10px;color:#94a18d}.test-panel ul{padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:11px;color:#68815e;line-height:1.7}.test-panel .hint{margin-bottom:15px}.secondary{background:#fff;border:1px solid #d8e2d1;border-radius:6px;color:#62815a;font-size:11px;padding:12px 16px}.failed,#error{color:#a04436!important}#error{background:#fff2ed;padding:10px;border-radius:6px;font-size:12px;line-height:1.7}footer{display:flex;justify-content:space-between;font-size:10px;color:#9aa38f;padding:27px 0 30px;gap:15px;line-height:1.8}footer b{font-weight:400;margin:0 9px}input:focus,select:focus{border-color:#6d9b7d;outline:3px solid #edf5ed}button:focus-visible,summary:focus-visible,a:focus-visible{outline:3px solid #72a68a;outline-offset:3px}[aria-invalid=true]{border-color:#b85847!important} [hidden]{display:none!important}
+@media(min-width:1300px){main{padding-top:49px}.power strong{font-size:32px}}
+@media(max-width:1024px){.workspace{grid-template-columns:285px minmax(0,1fr);gap:16px}.input-panel,.results-panel,.steps-panel{padding:20px}.right-column{gap:16px}.power-grid{gap:7px}.power{padding:14px 9px}.power strong{font-size:23px}.power>div{font-size:10px;gap:4px}.power small{font-size:9px}.visual-row{gap:15px}.angle-info{padding-left:18px}.phase-art{width:190px}main{padding:32px 22px 0}}
+@media(max-width:760px){header{height:68px;padding:0 20px}.brand{font-size:20px}.brand-en{font-size:9px}.header-note{font-size:10px}main{padding:28px 18px 0}.intro{gap:0}.phase-art{display:none}h1{font-size:29px}h1>span{font-size:13px}.eyebrow{font-size:9px;letter-spacing:2px}.sub{font-size:12px;line-height:1.8}.scope{font-size:10px;gap:8px;margin-bottom:20px}.workspace{grid-template-columns:1fr;gap:18px}.input-panel,.results-panel,.steps-panel{padding:22px 18px}.right-column{gap:18px}.input-wrap input{font-size:22px}.example-list button{flex:1 1 29%;padding:10px 8px}.example-list button span{font-size:9px;line-height:1.6}.power{padding:14px 10px}.power strong{font-size:26px}.power>div{font-size:11px}.power p{margin:15px 0 10px}.power p>span{font-size:10px}.power small{font-size:9px;line-height:1.6;display:block}.power>div b{display:none}.visual-row{gap:12px;grid-template-columns:1.3fr 1fr}.angle-info{padding-left:16px}.angle-info>strong{font-size:28px}.test-panel{padding:16px}.test-panel ul{grid-template-columns:1fr}summary{font-size:11px}summary>span:last-child{font-size:9px}footer{flex-direction:column;gap:5px;padding:24px 0}.section-title{margin-bottom:19px}}
+@media(max-width:370px){.brand-en{display:none}.power strong{font-size:21px}.power{padding:12px 7px}.power>div{font-size:10px}.example-list button{flex-basis:100%}.example-list button span{display:inline;margin-left:6px}.badge{font-size:9px}.test-panel summary{flex-wrap:wrap}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+</style>
+ 
+</head>
+<body>
+ <header><a class="brand" href="#main"><span class="brand-icon">∿</span> 相知 <span class="brand-en">PHASE LAB</span></a><span class="header-note"><i></i> 电气计算工具</span></header>
+ <main id="main">
+  <div class="intro"><div><p class="eyebrow">THREE-PHASE POWER CALCULATOR</p><h1>三相交流电路计算器<span>让每一相，都清晰。</span></h1><p class="sub">输入电路参数，即刻了解功率关系与计算过程。</p></div><div class="phase-art" aria-hidden="true"><span>L₁</span><span>L₂</span><span>L₃</span><svg viewBox="0 0 250 90"><path d="M0 45 Q20 -12 40 45 T80 45 T120 45 T160 45 T200 45 T240 45"/><path d="M0 70 Q20 70 40 20 T80 20 T120 20 T160 20 T200 20 T240 20"/><path d="M0 20 Q20 20 40 70 T80 70 T120 70 T160 70 T200 70 T240 70"/></svg></div></div>
+  <div class="scope"><span>适用条件</span> 三相平衡 · 正弦交流 · 电压与电流为有效值</div>
+  <div class="workspace">
+   <section class="panel input-panel" aria-labelledby="input-title">
+    <div class="section-title"><h2 id="input-title"><small>01</small> 电路参数</h2><button id="reset" class="text-button" type="button">重置</button></div>
+    <form id="form" novalidate>
+     <label for="voltage">线电压 <span>U<sub>L</sub></span></label><div class="input-wrap"><input id="voltage" type="number" inputmode="decimal" min="0" step="any" value="380" required aria-describedby="voltage-help error"><span>V</span></div><p id="voltage-help" class="hint">两根相线之间的电压</p>
+     <label for="current">线电流 <span>I<sub>L</sub></span></label><div class="input-wrap"><input id="current" type="number" inputmode="decimal" min="0" step="any" value="10" required aria-describedby="current-help error"><span>A</span></div><p id="current-help" class="hint">流过每根相线的电流</p>
+     <label for="factor">功率因数 <span>cos φ</span></label><div class="input-wrap"><input id="factor" type="number" inputmode="decimal" min="0" max="1" step="any" value="0.8" required aria-describedby="factor-help error"><span>0–1</span></div><p id="factor-help" class="hint">有功功率与视在功率之比，例如 0.8</p>
+     <label for="load">负载性质</label><select id="load"><option value="inductive">感性负载（电流滞后，Q ≥ 0）</option><option value="capacitive">容性负载（电流超前，Q ≤ 0）</option></select>
+     <p id="error" role="alert" hidden></p><button class="primary" type="submit">计算功率 <span>↗</span></button><p class="live-hint">输入即自动计算，结果保留 3 位小数</p>
+    </form>
+    <div class="examples"><h3>试试示例 <span>点击填入参数</span></h3><div class="example-list"><button data-example="0">常见电动机 <span>380 V · 10 A · 0.8</span></button><button data-example="1">纯电阻负载 <span>400 V · 20 A · 1.0</span></button><button data-example="2">容性负载 <span>380 V · 10 A · 0.9</span></button></div></div>
+   </section>
+   <div class="right-column">
+    <section class="panel results-panel" aria-labelledby="result-title"><div class="section-title"><h2 id="result-title"><small>02</small> 计算结果</h2><span id="state" class="badge">已实时更新</span></div>
+     <div id="results" aria-live="polite" aria-atomic="true"><div class="power-grid"><article class="power active"><div><span class="dot"></span> 有功功率 <b>P</b></div><p><strong id="p">—</strong> <span>kW</span></p><small>实际做功的功率</small></article><article class="power reactive"><div><span class="dot"></span> 无功功率 <b>Q</b></div><p><strong id="q">—</strong> <span>kvar</span></p><small>电场、磁场交换的功率</small></article><article class="power apparent"><div><span class="dot"></span> 视在功率 <b>S</b></div><p><strong id="s">—</strong> <span>kVA</span></p><small>电源需要提供的总容量</small></article></div></div>
+     <div class="visual-row"><div><p class="mini-title">功率三角形</p><p class="hint">S² = P² + Q²</p><svg id="triangle" viewBox="0 0 340 180" role="img" aria-label="功率三角形"><path id="tri-fill" fill="#ecf5f1"/><path id="tri-p" stroke="#147562" stroke-width="3"/><path id="tri-q" stroke="#c18b3c" stroke-width="3" stroke-dasharray="5 4"/><path id="tri-s" stroke="#537ea5" stroke-width="3"/><text id="label-p" fill="#147562">P</text><text id="label-q" fill="#996a25">Q</text><text id="label-s" fill="#537ea5">S</text><text id="label-angle" x="55" y="137" fill="#6c7d75">φ</text></svg></div><div class="angle-info"><span>相位角 φ</span><strong id="angle">—</strong><p id="direction">电流滞后于电压</p><div class="pf-meter"><span id="pf-bar"></span></div><small id="pf-caption">cos φ = 0.8</small></div></div>
+     <p class="result-note" id="result-note">提示：无功功率不直接做功，但会影响线路电流与设备容量。</p>
+    </section>
+    <section class="panel steps-panel" aria-labelledby="steps-title"><div class="section-title"><h2 id="steps-title"><small>03</small> 公式与计算步骤</h2><span class="muted">从参数到结果</span></div><p class="hint">U<sub>L</sub> 用 V，I<sub>L</sub> 用 A；除以 1000 转换为千单位。√3 ≈ 1.732051。</p><div id="steps"></div><p class="footnote">中间计算使用完整精度，显示值经过四舍五入。容性负载取负无功功率。</p></section>
+   </div>
+  </div>
+  <details class="panel test-panel"><summary><span>✓ 自动测试 <span id="test-count" class="badge">正在检测</span></span><span>查看测试详情 ＋</span></summary><p class="hint">每次打开网页自动运行，验证公式、边界条件与输入校验；不会更改当前输入。</p><ul id="test-list"></ul><button type="button" id="rerun" class="secondary">重新运行测试</button></details>
+  <footer><span>相知 PHASE LAB <b>／</b> 用清晰的计算，理解电力。</span><span>HTML · CSS · JavaScript · 离线可用</span></footer>
+ </main>
+<script>
+(function(root){
+ 'use strict';
+ function calculate(voltage,current,factor,load='inductive') {
+   const raw=[voltage,current,factor];
+   if(raw.some(v=>v===null||v===undefined||typeof v==='boolean'||String(v).trim()==='')) throw Error('请完整填写线电压、线电流和功率因数。');
+   const [u,i,pf]=raw.map(Number);
+   if(![u,i,pf].every(Number.isFinite)) throw Error('请输入有效的有限数字。');
+   if(u<0||i<0) throw Error('线电压和线电流不能为负数。');
+   if(pf<0||pf>1) throw Error('功率因数必须在 0 到 1 之间。');
+   if(!['inductive','capacitive'].includes(load)) throw Error('请选择有效的负载类型。');
+   const s=Math.sqrt(3)*u*i,p=s*pf,q=s*Math.sqrt(Math.max(0,1-pf*pf))*(load==='capacitive'?-1:1);
+   if(![s,p,q].every(Number.isFinite)) throw Error('输入数值过大，请减小后重试。');
+   return {u,i,pf,s,p,q,angle:Math.acos(pf)*180/Math.PI,load};
+ }
+ root.ThreePhase={calculate};
+})(typeof globalThis!=='undefined'?globalThis:window);
+
+</script>
+<script>
+(function(root){
+ 'use strict';
+ function runTests(){
+  const calculate=root.ThreePhase.calculate,results=[];
+  function test(name,fn){try{fn();results.push({name,passed:true});}catch(e){results.push({name,passed:false,error:e.message});}}
+  function close(a,b){if(Math.abs(a-b)>1e-8*Math.max(1,Math.abs(b)))throw Error(a+' ≠ '+b);}
+  function reject(...args){let threw=false;try{calculate(...args);}catch(e){threw=true;}if(!threw)throw Error('未拦截无效输入');}
+  test('380 V / 10 A / 0.8 标准示例',()=>{const r=calculate(380,10,.8);close(r.s,6581.793068761734);close(r.p,5265.434455009387);close(r.q,3949.07584125704);});
+  test('纯电阻：P = S，Q = 0',()=>{const r=calculate(400,20,1);close(r.p,r.s);close(r.q,0);});
+  test('功率因数为 0：P = 0，Q = S',()=>{const r=calculate(400,20,0);close(r.p,0);close(r.q,r.s);});
+  test('容性负载的无功为负',()=>close(calculate(380,10,.8,'capacitive').q,-3949.07584125704));
+  test('零电流 / 零电压',()=>{close(calculate(380,0,.8).s,0);close(calculate(0,10,.8).q,0);});
+  test('小数与字符串输入',()=>close(calculate('230.5','2.5','.9').p,Math.sqrt(3)*230.5*2.5*.9));
+  test('功率三角形恒等式',()=>{const r=calculate(690,125,.93);close(r.p*r.p+r.q*r.q,r.s*r.s);});
+  test('空值与空白拦截',()=>{reject('',10,.8);reject(380,' ',.8);reject(null,10,.8);});
+  test('负值拦截',()=>{reject(-380,10,.8);reject(380,-10,.8);});
+  test('功率因数越界拦截',()=>{reject(380,10,1.1);reject(380,10,-.1);});
+  test('非数值与无穷大拦截',()=>{reject('abc',10,.8);reject(Infinity,10,.8);reject(NaN,10,.8);});
+  test('溢出与负载类型拦截',()=>{reject(1e308,1e308,.8);reject(380,10,.8,'unknown');});
+  return results;
+ }
+ root.runCalculatorTests=runTests;
+})(typeof globalThis!=='undefined'?globalThis:window);
+
+</script>
+<script>
+(function(){
+ 'use strict';
+ const $=id=>document.getElementById(id),fields=['voltage','current','factor'], examples=[[380,10,.8,'inductive'],[400,20,1,'inductive'],[380,10,.9,'capacitive']];
+ const num=n=>new Intl.NumberFormat('zh-CN',{minimumFractionDigits:3,maximumFractionDigits:3}).format(n===0?0:n);
+ const raw=n=>new Intl.NumberFormat('zh-CN',{maximumSignificantDigits:10}).format(n);
+ function render(){
+  let r;
+  try{r=ThreePhase.calculate(...fields.map(id=>$(id).value),$('load').value);}
+  catch(e){$('error').textContent=e.message;$('error').hidden=false;$('state').textContent='请检查输入';$('state').classList.add('failed');['p','q','s','angle'].forEach(id=>$(id).textContent='—');$('steps').textContent='填写有效参数后，这里将显示完整的计算过程。';$('triangle').style.visibility='hidden';$('pf-bar').style.width='0%';$('pf-caption').textContent='等待有效参数';$('direction').textContent='等待有效参数';$('result-note').textContent='请修正输入；当前没有有效计算结果。';fields.forEach(id=>$(id).setAttribute('aria-invalid',String(!$(id).validity.valid)));return;}
+  $('error').hidden=true;fields.forEach(id=>$(id).setAttribute('aria-invalid','false'));$('state').textContent='已实时更新';$('state').classList.remove('failed');['p','q','s'].forEach(id=>$(id).textContent=num(r[id]/1000));$('angle').textContent=num(r.angle)+'°';$('direction').textContent=r.pf===1?'电压与电流同相':r.load==='capacitive'?'电流超前于电压':'电流滞后于电压';$('pf-bar').style.width=r.pf*100+'%';$('pf-caption').textContent='cos φ = '+raw(r.pf);
+  $('result-note').textContent=r.s===0?'电压或电流为零，三种功率均为零；图中不显示功率三角形。':r.load==='capacitive'?'容性负载约定：Q 为负值，功率三角形向下绘制。':'提示：无功功率不直接做功，但会影响线路电流与设备容量。';
+  const sign=r.load==='capacitive'?'−':'',sin=Math.sqrt(Math.max(0,1-r.pf*r.pf));
+  const steps=[['求相位角与正弦值','φ = arccos(cos φ)；sin φ = √(1 − cos²φ)',`φ = arccos(${raw(r.pf)}) = ${num(r.angle)}°；sin φ = ${num(sin)}`],['计算视在功率 S','S = √3 × U_L × I_L',`S = √3 × ${raw(r.u)} × ${raw(r.i)} = ${num(r.s)} VA = ${num(r.s/1000)} kVA`],['计算有功功率 P','P = √3 × U_L × I_L × cos φ = S × cos φ',`P = √3 × ${raw(r.u)} × ${raw(r.i)} × ${raw(r.pf)} = ${num(r.p)} W = ${num(r.p/1000)} kW`],['计算无功功率 Q',`Q = ${sign}√3 × U_L × I_L × √(1 − cos²φ)`,`Q = ${sign}√3 × ${raw(r.u)} × ${raw(r.i)} × √(1 − ${raw(r.pf)}²) = ${num(r.q)} var = ${num(r.q/1000)} kvar`]];
+  $('steps').replaceChildren(...steps.map((s,i)=>{const el=document.createElement('div');el.className='step';const no=document.createElement('span');no.className='step-num';no.textContent=i+1;const body=document.createElement('div');['h3','p','p'].forEach((tag,j)=>{const child=document.createElement(tag);child.textContent=s[j];if(j)child.className=j===1?'formula':'substitution';body.append(child);});el.append(no,body);return el;}));
+  $('triangle').style.visibility=r.s===0?'hidden':'visible';const capacitive=r.load==='capacitive',x0=65,y0=capacitive?25:155,x=x0+130*r.pf,y=y0+(capacitive?1:-1)*130*sin;
+  $('tri-fill').setAttribute('d',`M ${x0} ${y0} L ${x} ${y0} L ${x} ${y} Z`);$('tri-p').setAttribute('d',`M ${x0} ${y0} L ${x} ${y0}`);$('tri-q').setAttribute('d',`M ${x} ${y0} L ${x} ${y}`);$('tri-s').setAttribute('d',`M ${x0} ${y0} L ${x} ${y}`);
+  [['label-p',(x0+x)/2,y0+(capacitive?-10:20)],['label-q',x+12,(y0+y)/2],['label-s',(x0+x)/2-8,(y0+y)/2+(capacitive?20:-10)],['label-angle',x0+30,y0+(capacitive?20:-12)]].forEach(([id,tx,ty])=>{$(id).setAttribute('x',tx);$(id).setAttribute('y',ty);});$('label-angle').textContent=r.pf===1||r.pf===0?'':'φ';$('triangle').setAttribute('aria-label',`功率三角形示意图，P 为 ${num(r.p/1000)} kW，Q 为 ${num(r.q/1000)} kvar，S 为 ${num(r.s/1000)} kVA。横纵轴使用相同缩放。`);
+ }
+ function fill(values){fields.forEach((id,i)=>$(id).value=values[i]);$('load').value=values[3];render();}
+ function tests(){const results=runCalculatorTests(),passed=results.filter(r=>r.passed).length;$('test-count').textContent=`${passed} / ${results.length} 通过`;$('test-count').classList.toggle('failed',passed!==results.length);$('test-list').replaceChildren(...results.map(t=>{const li=document.createElement('li');li.textContent=(t.passed?'✓ ':'✕ ')+t.name+(t.error?'：'+t.error:'');li.classList.toggle('failed',!t.passed);return li;}));}
+ $('form').addEventListener('input',render);$('form').addEventListener('change',render);$('form').addEventListener('submit',e=>{e.preventDefault();render();});$('reset').addEventListener('click',()=>fill(examples[0]));document.querySelectorAll('[data-example]').forEach(button=>button.addEventListener('click',()=>fill(examples[Number(button.dataset.example)])));$('rerun').addEventListener('click',tests);render();tests();
+})();
+
+</script>
+</body></html>
